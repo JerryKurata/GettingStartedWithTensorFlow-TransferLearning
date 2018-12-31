@@ -1,0 +1,42 @@
+
+Since this course was originally release, the transfer learning code was removed from the TensorFlow source examples
+referenced in the course.  In addition, some users had issues working with zipped files containing the 
+flower images used to retrain the model.  To rectify both of these issues the following are contained in 
+this folder.
+
+retrain.py -  The program used to retrain the inception model to classify flowers.  This is example shown 
+in the course.
+
+flower_photos - a folder containing the uncompressed images used to retrain the model.  There are 5 folders 
+containing images, labelled by the flower class (daisy, dandelion, roses, sunflowers, tulips).
+
+To retrain the model using theimages in the flower_photos folder:
+- Ensure you are in the folder containing retrain.py
+- Enter the command: 
+
+      python retrain.py --image_dir ./flower_photos
+
+The retraining may take a while, so be patient.  
+
+By default, the retrained model is the file /tmp/output_graph.pb.  And the labels, flower types, found in 
+in the file /tmp/output_labels.txt.  
+
+You can test the retrained model on flower imaged by selecting an image from the test-images folder and running
+program try-retrain.py to see how well the model predicts the class of the image. For example, if use the command:
+
+     python try-retrain.py test-images\Daisy1.jpg
+
+You should see an output like the one shown below.
+
+Image Classification Probabilities
+daisy (score = 0.99684)
+dandelion (score = 0.00137)
+sunflowers (score = 0.00127)
+tulips (score = 0.00031)
+roses (score = 0.00022)
+
+The output above shows that the retrained model produces a 99.684% probability that the image in the file 
+test-images\Daisy1.jpg is in the class "daisy".  
+
+Have fun and try some of the other files in the test-images folder.  Some of them make some interesting 
+class predictions!
